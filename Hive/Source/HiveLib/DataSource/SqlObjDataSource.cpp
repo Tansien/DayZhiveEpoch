@@ -18,6 +18,7 @@
 
 #include "SqlObjDataSource.h"
 #include "Database/Database.h"
+#include <inttypes.h>
 
 #include <boost/format.hpp>
 #include <boost/lexical_cast.hpp>
@@ -296,4 +297,34 @@ bool SqlObjDataSource::createObject( int serverId, const string& className, doub
 	poco_assert(exRes == true);
 
 	return exRes;
+}
+
+Sqf::Value SqlObjDataSource::fetchObjectId( int serverId, Int64 objectIdent )
+{
+	Sqf::Parameters retVal;
+	//get details from db
+	auto worldObjsRes = getDB()->queryParams("SELECT `ObjectID` FROM `%s` WHERE `Instance` = %d AND `ObjectUID` = %"PRIu64"", _objTableName.c_str(), serverId, objectIdent);
+
+	if (worldObjsRes && worldObjsRes->fetchRow())
+	{
+		int objectid = 0;
+		//get stuff from row
+		objectid = worldObjsRes->at(0).getInt32();
+
+		if (objectid != 0)
+		{
+			retVal.push_back(string("PASS"));
+			retVal.push_back(lexical_cast<string>(objectid));
+		}
+		else
+		{
+			retVal.push_back(string("ERROR"));
+		}
+	}
+	else
+	{
+		retVal.push_back(string("ERROR"));
+	}
+
+	return retVal;
 }

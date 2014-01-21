@@ -35,4 +35,5 @@ public:
 	virtual bool updateVehicleStatus( int serverId, Int64 objectIdent, const Sqf::Value& hitPoints, double damage ) = 0;
 	virtual bool createObject( int serverId, const string& className, double damage, int characterId, 
 		const Sqf::Value& worldSpace, const Sqf::Value& inventory, const Sqf::Value& hitPoints, double fuel, Int64 uniqueId ) = 0;
+	virtual Sqf::Value fetchObjectId( int serverId, Int64 objectUID ) = 0;
 };

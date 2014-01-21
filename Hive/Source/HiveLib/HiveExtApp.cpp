@@ -133,7 +133,7 @@ HiveExtApp::HiveExtApp(string suffixDir) : AppServer("HiveExt",suffixDir), _serv
 	handlers[308] = boost::bind(&HiveExtApp::objectPublish,this,_1);
 
 	// Custom to just return db ID for object UID
-	handlers[388] = boost::bind(&HiveExtApp::loadObjectID,this,_1);
+	handlers[388] = boost::bind(&HiveExtApp::objectReturnId,this,_1);
 	// for maintain 
 	handlers[396] = boost::bind(&HiveExtApp::datestampObjectUpdate,this,_1,false);
 	handlers[397] = boost::bind(&HiveExtApp::datestampObjectUpdate,this,_1,true);
@@ -409,6 +409,12 @@ Sqf::Value HiveExtApp::objectPublish( Sqf::Parameters params )
 	return ReturnBooleanStatus(_objData->createObject(getServerId(),className,damage,characterId,worldSpace,inventory,hitPoints,fuel,uniqueId));
 }
 
+Sqf::Value HiveExtApp::objectReturnId( Sqf::Parameters params )
+{
+	Int64 ObjectUID = Sqf::GetBigInt(params.at(0));
+	return _objData->fetchObjectId(getServerId(),ObjectUID);
+}
+
 #include "DataSource/CharDataSource.h"
 
 Sqf::Value HiveExtApp::loadPlayer( Sqf::Parameters params )
@@ -446,12 +452,6 @@ Sqf::Value HiveExtApp::loadTraderDetails( Sqf::Parameters params )
 
 		return retVal;
 	}
-}
-
-Sqf::Value HiveExtApp::loadObjectID( Sqf::Parameters params )
-{
-	Int64 ObjectUID = Sqf::GetBigInt(params.at(0));
-	return _charData->fetchObjectId(ObjectUID);
 }
 
 Sqf::Value HiveExtApp::tradeObject( Sqf::Parameters params )

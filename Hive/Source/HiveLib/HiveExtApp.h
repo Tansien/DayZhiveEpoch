@@ -78,6 +78,7 @@ private:
 	Sqf::Value streamObjects(Sqf::Parameters params);
 
 	Sqf::Value objectPublish(Sqf::Parameters params);
+	Sqf::Value objectReturnId(Sqf::Parameters params);
 	Sqf::Value objectInventory(Sqf::Parameters params, bool byUID = false);
 	Sqf::Value objectDelete(Sqf::Parameters params, bool byUID = false);
 
@@ -89,7 +90,6 @@ private:
 	
 	Sqf::Value loadTraderDetails(Sqf::Parameters params);
 	Sqf::Value tradeObject(Sqf::Parameters params);
-	Sqf::Value loadObjectID(Sqf::Parameters params);
 	Sqf::Value datestampObjectUpdate(Sqf::Parameters params, bool byUID = false);
 	
 

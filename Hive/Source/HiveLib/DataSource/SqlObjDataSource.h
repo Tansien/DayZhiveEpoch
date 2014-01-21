@@ -40,6 +40,7 @@ public:
 	bool updateVehicleStatus( int serverId, Int64 objectIdent, const Sqf::Value& hitPoints, double damage ) override;
 	bool createObject( int serverId, const string& className, double damage, int characterId, 
 		const Sqf::Value& worldSpace, const Sqf::Value& inventory, const Sqf::Value& hitPoints, double fuel, Int64 uniqueId ) override;
+	Sqf::Value fetchObjectId( int serverId, Int64 objectIdent ) override;
 private:
 	string _objTableName;
 	int _cleanupPlacedDays;
