@@ -60,7 +60,7 @@ The Debug configuration simply compiles an executable that runs some tests, and 
 
 Usage:
 
-If you don't want to compile, you can download a prepackaged release for each released version from http://hive.rajko.info/ 
+If you don't want to compile, you can download a prepackaged release for each released version from http://dayzepoch.com/
 After successful compilation (or download of a prepackaged release), the Binaries folder should contain HiveExt.dll and DatabaseMySql.dll/DatabasePostgre.dll
 DatabaseMySql.dll/DatabasePostgre.dll should be placed in the root directory of your game installation
 If you don't have the TBB library installed to global system paths, those dlls should also be copied to the same dir as DatabaseMySql.dll/DatabasePostgre.dll
@@ -75,17 +75,8 @@ to be certain that the parameters inside match what you are currently running as
 
 Final:
 
-This project was started as a better alternative to the "official" Hive access library for DayZ,
-however, since my request for making it the official Hive access dll was denied (at the time),
-and that the most popular usage of it was running "private" or "local" servers for the game, 
-I have removed all the restrictions and certificate systems that were in place, so that it can connect to any server you want.
-
-Recently, after the founding of the DayZMod community that currently maintains DayZMod, this project DID become the official Hive access library.
-Just compiling the source code isn't enough to connect to the public hive database though, for that, use the libraries distributed with the official server files themselves
-Or, download a "blessed" version from http://hive.rajko.info/ (blessed version is identical to the open source one, except that it can connect to the public hive by default)
-You can (and it's preferred) to use the precompiled "blessed" version for connecting to your private hive as well, to save you from having to compile it yourself.
-
 Hive access library by Rajko Stojadinovic (https://github.com/rajkosto)
+This fork of HiveEXT has been modified for use with DayZ Epoch by Tansien (https://github.com/tansien/)
 If you would be so kind, and are satisfied with what this thing does, maybe send a donation my way to payment@rajko.info
 
-Good luck with your DayZ hosting !
+Good luck with your DayZ Epoch hosting !
